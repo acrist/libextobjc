@@ -935,19 +935,19 @@ void ext_replaceMethodsFromClass (Class srcClass, Class dstClass) {
 
 NSString *ext_stringFromTypedBytes (const void *bytes, const char *encoding) {
     switch (*encoding) {
-        case 'c': return @(*(char *)bytes).description;
-        case 'C': return @(*(unsigned char *)bytes).description;
-        case 'i': return @(*(int *)bytes).description;
-        case 'I': return @(*(unsigned int *)bytes).description;
-        case 's': return @(*(short *)bytes).description;
-        case 'S': return @(*(unsigned short *)bytes).description;
-        case 'l': return @(*(long *)bytes).description;
-        case 'L': return @(*(unsigned long *)bytes).description;
-        case 'q': return @(*(long long *)bytes).description;
-        case 'Q': return @(*(unsigned long long *)bytes).description;
-        case 'f': return @(*(float *)bytes).description;
-        case 'd': return @(*(double *)bytes).description;
-        case 'B': return @(*(_Bool *)bytes).description;
+        case 'c': return [NSNumber numberWithChar:*(char *)bytes].description;
+        case 'C': return [NSNumber numberWithUnsignedChar:*(unsigned char *)bytes].description;
+        case 'i': return [NSNumber numberWithInt:*(int *)bytes].description;
+        case 'I': return [NSNumber numberWithUnsignedInt:*(unsigned int *)bytes].description;
+        case 's': return [NSNumber numberWithShort:*(short *)bytes].description;
+        case 'S': return [NSNumber numberWithUnsignedShort:*(unsigned short *)bytes].description;
+        case 'l': return [NSNumber numberWithLong:*(long *)bytes].description;
+        case 'L': return [NSNumber numberWithUnsignedLong:*(unsigned long *)bytes].description;
+        case 'q': return [NSNumber numberWithLongLong:*(long long *)bytes].description;
+        case 'Q': return [NSNumber numberWithUnsignedLongLong:*(unsigned long long *)bytes].description;
+        case 'f': return [NSNumber numberWithFloat:*(float *)bytes].description;
+        case 'd': return [NSNumber numberWithDouble:*(double *)bytes].description;
+        case 'B': return [NSNumber numberWithBool:(BOOL)*(_Bool *)bytes].description;
         case 'v': return @"(void)";
         case '*': return [NSString stringWithFormat:@"\"%s\"", bytes];
 

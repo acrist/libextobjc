@@ -72,7 +72,7 @@ BOOL ext_addBlockMethod (Class aClass, SEL name, id block, const char *types) {
     BOOL success = class_addMethod(
         aClass,
         name,
-        imp_implementationWithBlock(block),
+        imp_implementationWithBlock((__bridge void *)block),
         types
     );
 
@@ -140,7 +140,7 @@ void ext_replaceBlockMethod (Class aClass, SEL name, id block, const char *types
     class_replaceMethod(
         aClass,
         name,
-        imp_implementationWithBlock(block),
+        imp_implementationWithBlock((__bridge void *)block),
         types
     );
 
