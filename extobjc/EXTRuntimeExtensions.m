@@ -143,7 +143,7 @@ static void ext_injectSpecialProtocols (void) {
             
             // transfer ownership of the injection block to ARC and remove it
             // from the structure
-            ext_specialProtocolInjectionBlock injectionBlock = (__bridge_transfer id)specialProtocols[i].injectionBlock;
+            ext_specialProtocolInjectionBlock injectionBlock = (id)specialProtocols[i].injectionBlock;
             specialProtocols[i].injectionBlock = NULL;
 
             // loop through all classes
@@ -847,7 +847,7 @@ BOOL ext_loadSpecialProtocol (Protocol *protocol, void (^injectionBehavior)(Clas
         // empty space in the array
         specialProtocols[specialProtocolCount] = (EXTSpecialProtocol){
             .protocol = protocol,
-            .injectionBlock = (__bridge_retained void *)copiedBlock,
+            .injectionBlock = (void *)copiedBlock,
             .ready = NO
         };
         #endif

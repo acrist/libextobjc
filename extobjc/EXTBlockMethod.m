@@ -86,7 +86,7 @@ BOOL ext_addBlockMethod (Class aClass, SEL name, id block, const char *types) {
 }
 
 char *ext_copyBlockTypeEncoding (id block) {
-    ext_block_t *blockInnards = (__bridge ext_block_t *)block;
+    ext_block_t *blockInnards = (ext_block_t *)block;
 
     if (!(blockInnards->flags & BLOCK_HAS_SIGNATURE))
         return NULL;

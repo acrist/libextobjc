@@ -92,7 +92,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"<EXTMaybe: %p error: %@>", (__bridge void *)self, m_error];
+    return [NSString stringWithFormat:@"<EXTMaybe: %p error: %@>", (void *)self, m_error];
 }
 
 - (NSUInteger)hash {

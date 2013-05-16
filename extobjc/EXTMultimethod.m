@@ -355,6 +355,12 @@ BOOL ext_loadMultimethods (Class targetClass) {
 }
 
 @implementation EXTMultimethodAttributes
+@synthesize parameterCount = _parameterCount;
+@synthesize implementation = _implementation;
+@synthesize classMethod = _classMethod;
+@synthesize parameterClasses = _parameterClasses;
+@synthesize selector = _selector;
+
 
 - (id)initWithName:(const char *)name implementation:(IMP)implementation parameterCount:(NSUInteger)parameterCount parameterClasses:(const Class *)parameterClasses; {
     self = [super init];
@@ -396,6 +402,9 @@ BOOL ext_loadMultimethods (Class targetClass) {
 - (void)dealloc {
     free((void *)self.parameterClasses);
     self.parameterClasses = NULL;
+#if !__has_feature(objc_arc)
+    [super dealloc];
+#endif
 }
 
 - (id)copyWithZone:(NSZone *)zone {

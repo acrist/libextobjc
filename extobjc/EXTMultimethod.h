@@ -145,6 +145,14 @@ Class ext_multimethod_parameterClassFromEncoding (const char *encoding);
 BOOL ext_loadMultimethods (Class targetClass);
 
 @interface EXTMultimethodAttributes : NSObject <NSCopying>
+{
+    @private
+    NSUInteger _parameterCount;
+    SEL _selector;
+    BOOL _classMethod;
+    IMP _implementation;
+    const Class *_parameterClasses;
+}
 @property (nonatomic, readonly) SEL selector;
 @property (nonatomic, getter = isClassMethod, readonly) BOOL classMethod;
 @property (nonatomic, readonly) IMP implementation;

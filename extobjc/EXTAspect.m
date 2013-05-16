@@ -55,7 +55,7 @@ static void getterAdviceMethod (ffi_cif *cif, void *result, void **args, void *u
     __unsafe_unretained id self = *(__unsafe_unretained id *)args[0];
     SEL _cmd = *(SEL *)args[1];
 
-    Class aspectContainer = (__bridge Class)userdata;
+    Class aspectContainer = (Class)userdata;
     Class selfClass = object_getClass(self);
 
     ext_adviceOriginalMethodBlock originalMethod = ^{
@@ -75,7 +75,7 @@ static void setterAdviceMethod (ffi_cif *cif, void *result, void **args, void *u
     __unsafe_unretained id self = *(__unsafe_unretained id *)args[0];
     SEL _cmd = *(SEL *)args[1];
 
-    Class aspectContainer = (__bridge Class)userdata;
+    Class aspectContainer = (Class)userdata;
     Class selfClass = object_getClass(self);
 
     ext_adviceOriginalMethodBlock originalMethod = ^{
@@ -95,7 +95,7 @@ static void specificAdviceMethod (ffi_cif *cif, void *result, void **args, void 
     __unsafe_unretained id self = *(__unsafe_unretained id *)args[0];
     SEL _cmd = *(SEL *)args[1];
 
-    Class aspectContainer = (__bridge Class)userdata;
+    Class aspectContainer = (Class)userdata;
     Class selfClass = object_getClass(self);
 
     ext_adviceOriginalMethodBlock originalMethod = ^{
@@ -137,7 +137,7 @@ static void specificAdviceMethod (ffi_cif *cif, void *result, void **args, void 
 
     // declared outside of the below scope because it has to remain in scope
     // while the IMP is being called
-    void *blockPtr = (__bridge void *)originalMethod;
+    void *blockPtr = (void *)originalMethod;
 
     {
         memcpy(innerArgs, args, sizeof(*innerArgs) * 2);
@@ -159,7 +159,7 @@ static void universalAdviceMethod (ffi_cif *cif, void *result, void **args, void
     __unsafe_unretained id self = *(__unsafe_unretained id *)args[0];
     SEL _cmd = *(SEL *)args[1];
 
-    Class aspectContainer = (__bridge Class)userdata;
+    Class aspectContainer = (Class)userdata;
     Class selfClass = object_getClass(self);
 
     ext_adviceOriginalMethodBlock originalMethod = ^{
@@ -316,7 +316,7 @@ static void ext_addAdviceToMethod (ext_FFIClosureFunction adviceFunction, Class 
         return;
     }
 
-    if (ffi_prep_closure_loc(closure, methodCIF, adviceFunction, (__bridge void *)containerClass, replacementIMP) != FFI_OK) {
+    if (ffi_prep_closure_loc(closure, methodCIF, adviceFunction, (void *)containerClass, replacementIMP) != FFI_OK) {
         fprintf(stderr, "ERROR: Could not prepare FFI closure for injected method\n");
 
         ffi_closure_free(closure);
