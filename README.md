@@ -1,4 +1,4 @@
-The Extended Objective-C library extends the dynamism of the Objective-C programming language to support additional patterns present in other dynamic programming languages (including those that are not necessarily object-oriented).
+The Extended Objective-C library extends the dynamism of the Objective-C programming language to support additional patterns present in other programming languages (including those that are not necessarily object-oriented).
 
 libextobjc is meant to be very modular – most of its classes and modules can be used with no more than one or two dependencies.
 
@@ -46,3 +46,5 @@ file for more information.
 # Requirements
 
 [libffi](https://github.com/jspahrsummers/libffi) is used for EXTAspect, but is not required for the other modules of the project. In order for the unit tests to build and pass, libffi must be retrieved using `git submodule update --init` after cloning the repository.
+
+libextobjc must be built with ARC enabled, and many of its macros require ARC in the calling files as well. MRC usage is not supported.
