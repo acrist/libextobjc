@@ -44,6 +44,8 @@ id target = [EXTBlockTarget blockTargetWithSelector:@selector(afterOne) action:^
  * @endcode
  */
 @interface EXTBlockTarget : NSObject {
+    SEL name;
+    id implementation;
 }
 
 /**

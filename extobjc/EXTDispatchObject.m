@@ -9,9 +9,7 @@
 
 #import "EXTDispatchObject.h"
 
-@interface EXTDispatchObject() {
-    __strong NSArray *targets;
-}
+@interface EXTDispatchObject()
 
 @end
 

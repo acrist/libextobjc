@@ -20,6 +20,9 @@
  * \c id or using one of the classes being proxied.
  */
 @interface EXTMultiObject : NSObject
+{
+    __strong NSArray *targets;
+}
 
 /**
  * Returns an autoreleased object that will selectively dispatch messages to the provided

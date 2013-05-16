@@ -18,6 +18,13 @@
  * appear to be \c nil to any code that tries to make use of it).
  */
 @interface EXTMaybe : NSProxy
+{
+    /**
+     * The error with which this object was instantiated.
+     */
+    NSError *m_error;
+}
+
 
 /**
  * Returns an object which behaves like the given error when sent \c NSError

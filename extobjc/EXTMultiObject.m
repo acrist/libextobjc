@@ -9,10 +9,7 @@
 
 #import "EXTMultiObject.h"
 
-@interface EXTMultiObject () {
-    __strong NSArray *targets;
-}
-
+@interface EXTMultiObject ()
 @end
 
 @implementation EXTMultiObject

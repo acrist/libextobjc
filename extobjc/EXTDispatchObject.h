@@ -23,6 +23,9 @@
  * \c id or using one of the classes being proxied.
  */
 @interface EXTDispatchObject : NSObject
+{
+    __strong NSArray *targets;
+}
 
 /**
  * Returns an autoreleased object that will dispatch all messages to the provided

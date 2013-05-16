@@ -11,13 +11,7 @@
 #import "EXTNil.h"
 #import <objc/runtime.h>
 
-@interface EXTMaybe () {
-    /**
-     * The error with which this object was instantiated.
-     */
-    NSError *m_error;
-}
-
+@interface EXTMaybe () 
 @end
 
 @implementation EXTMaybe

@@ -181,7 +181,7 @@ static EXTMultimethodAttributes *ext_bestMultimethod (NSArray *implementations, 
     #endif
 
     // and return the bestest match
-    return possibilities[0];
+    return [possibilities objectAtIndex:0];
 }
 
 Class ext_multimethod_parameterClassFromEncoding (const char *encoding) {
@@ -237,18 +237,18 @@ BOOL ext_loadMultimethods (Class targetClass) {
         else
             metamethodName = [@"-" stringByAppendingString:metamethodName];
 
-        NSMutableArray *implementations = implementationsBySelectorName[metamethodName];
+        NSMutableArray *implementations = [implementationsBySelectorName valueForKey:metamethodName];
 
         if (!implementations) {
             implementations = [NSMutableArray array];
-            implementationsBySelectorName[metamethodName] = implementations;
+            [implementationsBySelectorName setValue:implementations forKey:metamethodName];
         }
 
         [implementations addObject:attributes];
     }
 
     for (NSString *name in implementationsBySelectorName) {
-        NSArray *implementations = implementationsBySelectorName[name];
+        NSArray *implementations = [implementationsBySelectorName valueForKey:name];
         EXTMultimethodAttributes *attributes = implementations.lastObject;
 
         // associate the multimethod implementations with the class, so we can
